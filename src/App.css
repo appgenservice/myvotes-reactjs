@@ -24,13 +24,25 @@
   margin: 10px;
 }
 .free {
-  background-color: #b3ffb3;
+  background-color: #b3edff;
 }
 .occupied {
-  background-color: #ffffff;
+  background-color: #f2ffe6;
 }
 .card-title {
   float: left;
   width: 50%;
   border-bottom: 1px solid #e1e1e1;
+}
+
+.button-action {
+  float: right;
+  width: 100px;
+  background-color: #e1e1e1;
+  border: none;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }

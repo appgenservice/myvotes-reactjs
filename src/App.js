@@ -4,7 +4,8 @@ import './App.css';
 
 class App extends Component {
   loadCPs =()=> {
-    fetch('http://appgenservice.com:9090/cpm/dashboard')
+    const url = (process.env.REACT_APP_API_URL ? process.env.REACT_APP_API_URL : "http://appgenservice.com:9090") +  "/cpm/dashboard";
+    fetch(url)
         .then(res => res.json())
         .then((data) => {
             this.setState({ cps: data })

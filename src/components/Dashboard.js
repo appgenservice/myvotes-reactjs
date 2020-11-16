@@ -2,8 +2,8 @@ import React from 'react'
 import moment from 'moment'
 class Dashboard extends React.Component {
    manageCP =(occupied, id)=> {
-    const url = "http://appgenservice.com:9090//cpm/management/"  + (occupied ? "unplug/" : "plug/") + id;
-    console.log(">>>>>>>>>>>>>>", url);
+    const url = (process.env.REACT_APP_API_URL ? process.env.REACT_APP_API_URL : "http://appgenservice.com:9090") +  "/cpm/management/"  + (occupied ? "unplug/" : "plug/") + id;
+    console.log(url);
     fetch(url, {
        method: 'PUT'
     }).then((res) => {
@@ -14,11 +14,11 @@ class Dashboard extends React.Component {
      console.error(err)
    });
   }
+
 render() {
     let {cps} = this.props;
 
     return (
-
         <div className="container">
 
             {cps && cps.map((cp) => (
@@ -34,14 +34,13 @@ render() {
                         <div className="card-title">Plugged Time: </div>
 
                         <div className="card-title"> {cp.occupied ? moment(cp.connectedTime).format('MM.DD.YYYY hh:mm:ss') : "-"}</div>
-                        <a href="#" onClick={() => this.manageCP(cp.occupied, cp.id)}>{cp.occupied ? "Unplug" : "Plug"}</a>
+                        <button className="button-action" onClick={() => this.manageCP(cp.occupied, cp.id)}>{cp.occupied ? "Unplug" : "Plug"}</button>
                     </div>
                 </div>
             ))}
         </div>
     );
 }
-
 };
 
 export default Dashboard
