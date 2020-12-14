@@ -19,9 +19,11 @@
 }
 
 .card {
-  width: 350px;
+  width: 100%;
   float: left;
   margin: 10px;
+  border: none;
+  border-bottom: 1px solid #e1e1e1;
 }
 .free {
   background-color: #b3edff;
@@ -31,10 +33,25 @@
 }
 .card-title {
   float: left;
-  width: 50%;
-  border-bottom: 1px solid #e1e1e1;
+  width: 100%;
+  font-size: 1.75rem;
+  margin-bottom: .5rem;
+  font-weight: 500;
+  line-height: 1.2;
 }
-
+.card-description{
+  float: left;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.opinion {
+  float: left;
+  width: 100%;
+}
+.opinionContent{
+  float: left;
+  padding: 10px;
+}
 .button-action {
   float: right;
   width: 100px;

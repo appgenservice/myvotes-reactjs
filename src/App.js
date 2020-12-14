@@ -1,39 +1,32 @@
 import React, {Component} from 'react';
 import Dashboard from './components/Dashboard';
+import Poll from './components/Poll';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 import './App.css';
 
 class App extends Component {
-  loadCPs =()=> {
-    const url = (process.env.REACT_APP_API_URL ? process.env.REACT_APP_API_URL : "http://appgenservice.com:9090") +  "/cpm/dashboard";
-    fetch(url)
-        .then(res => res.json())
-        .then((data) => {
-            this.setState({ cps: data })
-        })
-        .catch(console.log);
- }
+
 
     render() {
         return (
+          <Router>
             <div className="app">
-              <div className="app-header">Charging Point Management</div>
-              <Dashboard cps={this.state.cps} reload={this.loadCPs}/>
+              <div className="app-header">My Votes. My Opinion</div>
             </div>
+            <Switch>
+            <Route path="/home" component={Dashboard} />
+            <Route path="/poll/:id/:title" component={Poll} />
+            <Route path='/'>
+              <Redirect to="/home" />
+            </Route>
+            </Switch>
+          </Router>
         )
-    }
-
-    state = {
-        cps: []
-    };
-
-    componentDidMount() {
-      this.loadCPs();
-        // fetch('http://localhost:8080/cpm/dashboard')
-        //     .then(res => res.json())
-        //     .then((data) => {
-        //         this.setState({ cps: data })
-        //     })
-        //     .catch(console.log)
     }
 }
 
