@@ -33,7 +33,6 @@ render() {
                         <div className="card-description">{poll.description}</div>
                     </div>
                 </div>
-
             ))}
         </div>
     );
